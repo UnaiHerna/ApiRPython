@@ -1,0 +1,4 @@
+fastapi~=0.111.0
+python-multipart
+rpy2~=3.5.16
+pydantic~=2.7.4
