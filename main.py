@@ -64,5 +64,6 @@ async def steadystate(mltss_sp: float, so_aer_sp: float, q_int: float, tss_eff_s
 @app.get("/heatmap")
 async def heatmap(db: Session = Depends(get_db)):
     query = select(Heatmap).order_by(Heatmap.id)
-    variables = db.execute(query).scalars().all()
-    return variables
+    datos = db.execute(query).scalars().all()
+    return datos
+
