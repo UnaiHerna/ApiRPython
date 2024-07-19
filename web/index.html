@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bootstrap Grid Example</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="form-group">
+                <input type="text" id="t1" class="form-control mb-2" placeholder="Mltss_sp">
+                <input type="text" id="t2" class="form-control mb-2" placeholder="So_aer_sp">
+                <input type="text" id="t3" class="form-control mb-2" placeholder="Q_int">
+                <input type="text" id="t4" class="form-control mb-2" placeholder="Tss_eff_sp">
+                <input type="text" id="t5" class="form-control mb-2" placeholder="Temp">
+            </div>
+        </div>
+
+        <div class="col-md-4 text-center">
+            <button type="button" class="btn btn-primary mt-4" onclick="handleButtonClick()">Calcula</button>
+        </div>
+
+        <div class="col-md-4">
+            <p id="resultado" class="mt-4" style="font-size: smaller;">Aquí va el texto que quieres mostrar. Este texto está en la columna derecha.</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    function handleButtonClick() {
+        // Obtener valores de los textboxes
+        const t1 = encodeURIComponent(document.getElementById('t1').value);
+        const t2 = encodeURIComponent(document.getElementById('t2').value);
+        const t3 = encodeURIComponent(document.getElementById('t3').value);
+        const t4 = encodeURIComponent(document.getElementById('t4').value);
+        const t5 = encodeURIComponent(document.getElementById('t5').value);
+
+        // Crear un nuevo XMLHttpRequest
+        var xhttp = new XMLHttpRequest();
+
+        // Esta es la función que se ejecutará al finalizar la llamada
+        xhttp.onreadystatechange = function() {
+            if (this.readyState == 4) {
+                const resultadoElement = document.getElementById('resultado');
+                if (resultadoElement) {
+                    if (this.status == 200) {
+                        try {
+                            // Procesar la respuesta (por ejemplo, JSON)
+                            const response = JSON.parse(this.responseText);
+                            console.log("Respuesta del servidor:", response); // Depurar respuesta
+                            resultadoElement.innerText = JSON.stringify(response, null, 2);
+                        } catch (e) {
+                            // En caso de error al parsear la respuesta
+                            console.error("Error al procesar la respuesta:", e);
+                            resultadoElement.innerText = 'Error al procesar la respuesta.';
+                        }
+                    } else {
+                        // Mostrar mensaje de error si la solicitud no fue exitosa
+                        resultadoElement.innerText = 'Error en la solicitud: ' + this.status;
+                    }
+                } else {
+                    console.error("Elemento con ID 'resultado' no encontrado.");
+                }
+            }
+        };
+
+        // Endpoint de la API y método que se va a usar para llamar
+        xhttp.open("GET", `http://51.20.1.110:8000/r/steadystate?mltss_sp=${t1}&so_aer_sp=${t2}&q_int=${t3}&tss_eff_sp=${t4}&temp=${t5}`, true);
+        xhttp.send();
+    }
+</script>
+
+</body>
+</html>
