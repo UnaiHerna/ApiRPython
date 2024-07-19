@@ -10,3 +10,11 @@ class Heatmap(Base):
     temp = Column(Float)
     mltss = Column(Integer)
     sludge_prod = Column(Float)
+
+    def to_dict(self):
+        return {
+            'id': self.id,
+            'temp': self.temp,
+            'mltss': self.mltss,
+            'sludge_prod': self.sludge_prod,
+        }

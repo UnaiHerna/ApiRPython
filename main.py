@@ -89,6 +89,9 @@ async def heatmap(db: Session = Depends(get_db)):
         return cached_data
     query = select(Heatmap).order_by(Heatmap.id)
     datos = db.execute(query).scalars().all()
-    set_cached_response(cache_key, datos)
-    return datos
+
+    datos_dict = [dato.to_dict() for dato in datos]
+
+    set_cached_response(cache_key, datos_dict)
+    return datos_dict
 
