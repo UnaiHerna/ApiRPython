@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.exc import SQLAlchemyError
 
 # Ruta al archivo CSV y detalles de la base de datos MySQL
-csv_file = 'Datos para hacer heatmap.csv'
+csv_file = 'heatmap.csv'
 mysql_username = 'root'
 mysql_password = 'Cim12345!'
 mysql_host = 'localhost'

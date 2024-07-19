@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BBDD Cimico</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <button type="button" class="btn btn-primary mt-4" onclick="handleButtonClick()">Calcula</button>
+        </div>
+
+        <div class="col-md-4">
+            <p id="resultado" class="mt-4" style="font-size: smaller;">Aquí iría el grafico.</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+    async function handleButtonClick() {
+
+        // Endpoint de la API
+        const url = `http://51.20.1.110:8000/heatmap/`;
+
+        try {
+            // Realizar la solicitud usando fetch
+            const response = await fetch(url);
+
+            // Obtener el elemento donde se mostrará el resultado
+            const resultadoElement = document.getElementById('resultado');
+
+            if (response.ok) {
+                // Si la respuesta es exitosa, procesar el JSON
+                const data = await response.json();
+                console.log("Respuesta del servidor:", data); // Depurar respuesta
+                resultadoElement.innerText = JSON.stringify(data, null, 2);
+            } else {
+                // Mostrar mensaje de error si la solicitud no fue exitosa
+                resultadoElement.innerText = 'Error en la solicitud: ' + response.status;
+            }
+        } catch (error) {
+            // Manejar errores de red u otros errores
+            console.error("Error al realizar la solicitud:", error);
+            const resultadoElement = document.getElementById('resultado');
+            resultadoElement.innerText = 'Error al realizar la solicitud.';
+        }
+    }
+</script>
+
+</body>
+</html>
