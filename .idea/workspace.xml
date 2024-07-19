@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b58a6101-c569-42f2-901b-ab3cc7edc054" name="Changes" comment="No lo era">
+    <list default="true" id="b58a6101-c569-42f2-901b-ab3cc7edc054" name="Changes" comment="FetchAPI">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/heatmap.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/heatmap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,6 +69,9 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\UnaiHernandezIzcue\PycharmProjects\ApiRPython" />
     </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\UnaiHernandezIzcue\PycharmProjects\ApiRPython\datos" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="ApiRPython" type="Python.FastAPI">
@@ -108,7 +112,7 @@
       <workItem from="1721213540093" duration="5992000" />
       <workItem from="1721284205486" duration="13831000" />
       <workItem from="1721369940522" duration="3561000" />
-      <workItem from="1721382684846" duration="3055000" />
+      <workItem from="1721382684846" duration="5608000" />
     </task>
     <task id="LOCAL-00001" summary="ApiRPython">
       <option name="closed" value="true" />
@@ -182,7 +186,31 @@
       <option name="project" value="LOCAL" />
       <updated>1721387215183</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Muy loco">
+      <option name="closed" value="true" />
+      <created>1721387731156</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1721387731156</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Muy loco">
+      <option name="closed" value="true" />
+      <created>1721387773518</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1721387773518</updated>
+    </task>
+    <task id="LOCAL-00012" summary="FetchAPI">
+      <option name="closed" value="true" />
+      <created>1721388248109</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1721388248109</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -198,10 +226,12 @@
     <MESSAGE value="Sii" />
     <MESSAGE value="Fin?" />
     <MESSAGE value="No lo era" />
-    <option name="LAST_COMMIT_MESSAGE" value="No lo era" />
+    <MESSAGE value="Muy loco" />
+    <MESSAGE value="FetchAPI" />
+    <option name="LAST_COMMIT_MESSAGE" value="FetchAPI" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ApiRPython$panda.coverage" NAME="panda Coverage Results" MODIFIED="1721387046655" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/ApiRPython$ApiRPython.coverage" NAME="ApiRPython Coverage Results" MODIFIED="1721387681642" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/ApiRPython$ApiRPython.coverage" NAME="ApiRPython Coverage Results" MODIFIED="1721390128685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
