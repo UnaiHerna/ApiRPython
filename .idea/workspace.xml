@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b58a6101-c569-42f2-901b-ab3cc7edc054" name="Changes" comment="Cambio -r">
+    <list default="true" id="b58a6101-c569-42f2-901b-ab3cc7edc054" name="Changes" comment="Sorry">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
@@ -24,18 +24,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "UnaiHerna"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;UnaiHerna&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/UnaiHerna/ApiRPython.git",
-    "accountId": "7b32e7db-ffbe-4315-9e89-91b39fc3a155"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/UnaiHerna/ApiRPython.git&quot;,
+    &quot;accountId&quot;: &quot;7b32e7db-ffbe-4315-9e89-91b39fc3a155&quot;
   }
-}]]></component>
+}</component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
   </component>
@@ -105,7 +105,8 @@
       <workItem from="1721212006971" duration="1258000" />
       <workItem from="1721213286128" duration="247000" />
       <workItem from="1721213540093" duration="5992000" />
-      <workItem from="1721284205486" duration="12542000" />
+      <workItem from="1721284205486" duration="13831000" />
+      <workItem from="1721369940522" duration="13000" />
     </task>
     <task id="LOCAL-00001" summary="ApiRPython">
       <option name="closed" value="true" />
@@ -123,7 +124,23 @@
       <option name="project" value="LOCAL" />
       <updated>1721301385570</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Si">
+      <option name="closed" value="true" />
+      <created>1721308249316</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1721308249316</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Sorry">
+      <option name="closed" value="true" />
+      <created>1721309349307</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1721309349307</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -132,7 +149,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="ApiRPython" />
     <MESSAGE value="Cambio -r" />
-    <option name="LAST_COMMIT_MESSAGE" value="Cambio -r" />
+    <MESSAGE value="Si" />
+    <MESSAGE value="Sorry" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sorry" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/ApiRPython$ApiRPython.coverage" NAME="ApiRPython Coverage Results" MODIFIED="1721299077201" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
