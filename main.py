@@ -1,8 +1,10 @@
 import rpy2.robjects as robjects
 from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy import select
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 from db.connector import get_db
+from db.models import Heatmap
 
 app = FastAPI()
 
@@ -10,7 +12,7 @@ app = FastAPI()
 app.add_middleware(
     # Permite todos los orígenes. Cambia esto para producción.
     # Permite todos los métodos (GET, POST, etc.)
-    # Permite todos los encabezados
+    # Permite todos los encabezadosm
     CORSMiddleware,
     allow_origins=["*"],
     allow_methods=["*"],
@@ -61,7 +63,6 @@ async def steadystate(mltss_sp: float, so_aer_sp: float, q_int: float, tss_eff_s
 
 @app.get("/heatmap")
 async def heatmap(db: Session = Depends(get_db)):
-    return "si"
-    #query = select(Variable).order_by(Variable.id)
-    #variables = db.execute(query).scalars().all()
-    #return variables
+    query = select(Heatmap).order_by(Heatmap.id)
+    variables = db.execute(query).scalars().all()
+    return variables
