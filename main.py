@@ -1,10 +1,23 @@
-from fastapi import FastAPI, HTTPException
 import rpy2.robjects as robjects
-import time
+from fastapi import FastAPI, Depends, HTTPException
+from sqlalchemy.orm import Session
+from starlette.middleware.cors import CORSMiddleware
+from db.connector import get_db
+
 app = FastAPI()
 
+# Configura CORS
+app.add_middleware(
+    # Permite todos los orígenes. Cambia esto para producción.
+    # Permite todos los métodos (GET, POST, etc.)
+    # Permite todos los encabezados
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-@app.get("/steadystate")
+@app.get("/r/steadystate")
 async def steadystate(mltss_sp: float, so_aer_sp: float, q_int: float, tss_eff_sp: float, temp: float):
     try:
         #inicio = time.time()
@@ -45,3 +58,10 @@ async def steadystate(mltss_sp: float, so_aer_sp: float, q_int: float, tss_eff_s
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/heatmap")
+async def heatmap(db: Session = Depends(get_db)):
+    return "si"
+    #query = select(Variable).order_by(Variable.id)
+    #variables = db.execute(query).scalars().all()
+    #return variables

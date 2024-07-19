@@ -1,4 +1,6 @@
-fastapi
+fastapi~=0.111.1
 python-multipart
-rpy2
+rpy2~=3.5.16
 pydantic
+SQLAlchemy~=2.0.31
+starlette~=0.37.2
