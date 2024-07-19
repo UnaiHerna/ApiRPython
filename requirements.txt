@@ -1,9 +1,9 @@
-fastapi~=0.111.1
+fastapi
 python-multipart
-rpy2~=3.5.16
+rpy2
 pydantic
-SQLAlchemy~=2.0.31
-starlette~=0.37.2
+SQLAlchemy
+starlette
 pymysql
-pandas~=2.2.2
+pandas
 mysql-connector-python
