@@ -6,9 +6,9 @@ from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
 from starlette.responses import HTMLResponse
 from starlette.staticfiles import StaticFiles
-
 from db.connector import get_db
 from db.models import Heatmap
+from db.redis_client import get_cached_response, set_cached_response
 
 app = FastAPI()
 
@@ -35,6 +35,10 @@ async def read_index():
 
 @app.get("/r/steadystate")
 async def steadystate(mltss_sp: float, so_aer_sp: float, q_int: float, tss_eff_sp: float, temp: float):
+    cache_key = f"datos_steady_{mltss_sp, so_aer_sp, q_int, tss_eff_sp, temp}"
+    cached_data = get_cached_response(cache_key)
+    if cached_data:
+        return cached_data
     try:
         #inicio = time.time()
 
@@ -70,6 +74,8 @@ async def steadystate(mltss_sp: float, so_aer_sp: float, q_int: float, tss_eff_s
         #fin = time.time()
 
         #print("Tiempo de ejecución: ", fin - inicio, "segundos")
+
+        set_cached_response(cache_key, result_dict)
         return result_dict
 
     except Exception as e:
@@ -77,7 +83,12 @@ async def steadystate(mltss_sp: float, so_aer_sp: float, q_int: float, tss_eff_s
 
 @app.get("/heatmap")
 async def heatmap(db: Session = Depends(get_db)):
+    cache_key = f"datos_steady_{db}"
+    cached_data = get_cached_response(cache_key)
+    if cached_data:
+        return cached_data
     query = select(Heatmap).order_by(Heatmap.id)
     datos = db.execute(query).scalars().all()
+    set_cached_response(cache_key, datos)
     return datos
 

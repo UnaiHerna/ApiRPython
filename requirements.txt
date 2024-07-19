@@ -7,3 +7,4 @@ starlette
 pymysql
 pandas
 mysql-connector-python
+redis
