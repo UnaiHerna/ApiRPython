@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bootstrap Grid Example</title>
+    <title>Api Cimico</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
@@ -35,7 +35,7 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 <script>
-    function handleButtonClick() {
+    async function handleButtonClick() {
         // Obtener valores de los textboxes
         const t1 = encodeURIComponent(document.getElementById('t1').value);
         const t2 = encodeURIComponent(document.getElementById('t2').value);
@@ -43,38 +43,31 @@
         const t4 = encodeURIComponent(document.getElementById('t4').value);
         const t5 = encodeURIComponent(document.getElementById('t5').value);
 
-        // Crear un nuevo XMLHttpRequest
-        var xhttp = new XMLHttpRequest();
+        // Endpoint de la API
+        const url = `http://51.20.1.110:8000/r/steadystate?mltss_sp=${t1}&so_aer_sp=${t2}&q_int=${t3}&tss_eff_sp=${t4}&temp=${t5}`;
 
-        // Esta es la función que se ejecutará al finalizar la llamada
-        xhttp.onreadystatechange = function() {
-            if (this.readyState == 4) {
-                const resultadoElement = document.getElementById('resultado');
-                if (resultadoElement) {
-                    if (this.status == 200) {
-                        try {
-                            // Procesar la respuesta (por ejemplo, JSON)
-                            const response = JSON.parse(this.responseText);
-                            console.log("Respuesta del servidor:", response); // Depurar respuesta
-                            resultadoElement.innerText = JSON.stringify(response, null, 2);
-                        } catch (e) {
-                            // En caso de error al parsear la respuesta
-                            console.error("Error al procesar la respuesta:", e);
-                            resultadoElement.innerText = 'Error al procesar la respuesta.';
-                        }
-                    } else {
-                        // Mostrar mensaje de error si la solicitud no fue exitosa
-                        resultadoElement.innerText = 'Error en la solicitud: ' + this.status;
-                    }
-                } else {
-                    console.error("Elemento con ID 'resultado' no encontrado.");
-                }
+        try {
+            // Realizar la solicitud usando fetch
+            const response = await fetch(url);
+
+            // Obtener el elemento donde se mostrará el resultado
+            const resultadoElement = document.getElementById('resultado');
+
+            if (response.ok) {
+                // Si la respuesta es exitosa, procesar el JSON
+                const data = await response.json();
+                console.log("Respuesta del servidor:", data); // Depurar respuesta
+                resultadoElement.innerText = JSON.stringify(data, null, 2);
+            } else {
+                // Mostrar mensaje de error si la solicitud no fue exitosa
+                resultadoElement.innerText = 'Error en la solicitud: ' + response.status;
             }
-        };
-
-        // Endpoint de la API y método que se va a usar para llamar
-        xhttp.open("GET", `http://51.20.1.110:8000/r/steadystate?mltss_sp=${t1}&so_aer_sp=${t2}&q_int=${t3}&tss_eff_sp=${t4}&temp=${t5}`, true);
-        xhttp.send();
+        } catch (error) {
+            // Manejar errores de red u otros errores
+            console.error("Error al realizar la solicitud:", error);
+            const resultadoElement = document.getElementById('resultado');
+            resultadoElement.innerText = 'Error al realizar la solicitud.';
+        }
     }
 </script>
 
