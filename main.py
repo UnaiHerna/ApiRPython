@@ -25,7 +25,7 @@ app.add_middleware(
 )
 
 
-templates = Jinja2Templates(directory="templates")
+templates = Jinja2Templates(directory="web")
 
 
 @app.get("/", response_class=HTMLResponse)
