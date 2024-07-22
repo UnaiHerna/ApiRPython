@@ -108,6 +108,6 @@ if __name__ == '__main__':
         app,
         host="0.0.0.0",
         port=443,
-        ssl_keyfile="/etc/letsencrypt/live/tu_dominio.com/privkey.pem",
-        ssl_certfile="/etc/letsencrypt/live/tu_dominio.com/fullchain.pem"
+        ssl_keyfile="privkey.pem",
+        ssl_certfile="fullchain.pem"
     )
