@@ -1,11 +1,12 @@
 import rpy2.robjects as robjects
 from fastapi import FastAPI, Depends, HTTPException
-from pathlib import Path as pathlib_Path
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 from starlette.middleware.cors import CORSMiddleware
+from starlette.requests import Request
 from starlette.responses import HTMLResponse
-from starlette.staticfiles import StaticFiles
+from starlette.templating import Jinja2Templates
+
 from db.connector import get_db
 from db.models import Heatmap
 from db.redis_client import get_cached_response, set_cached_response
@@ -23,14 +24,18 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Configura el directorio para servir archivos estáticos
-app.mount("/web", StaticFiles(directory="web"), name="web")
+
+templates = Jinja2Templates(directory="templates")
 
 
 @app.get("/", response_class=HTMLResponse)
-async def read_index():
-    index_file = pathlib_Path("web/index.html")
-    return index_file.read_text()
+async def read_root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
+
+
+@app.get("/heatmap", response_class=HTMLResponse)
+async def read_heatmap(request: Request):
+    return templates.TemplateResponse("heatmap.html", {"request": request})
 
 
 @app.get("/r/steadystate")
@@ -81,9 +86,10 @@ async def steadystate(mltss_sp: float, so_aer_sp: float, q_int: float, tss_eff_s
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
 
-@app.get("/heatmap")
+
+@app.get("/datos/heatmap")
 async def heatmap(db: Session = Depends(get_db)):
-    cache_key = f"datos_steady_{db}"
+    cache_key = f"datos_heatmap_{db}"
     cached_data = get_cached_response(cache_key)
     if cached_data:
         return cached_data
@@ -94,4 +100,3 @@ async def heatmap(db: Session = Depends(get_db)):
 
     set_cached_response(cache_key, datos_dict)
     return datos_dict
-
